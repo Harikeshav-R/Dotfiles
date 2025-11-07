@@ -27,7 +27,7 @@ return {
   -- Completion
   { import = "astrocommunity.completion.avante-nvim" },
   -- { import = "astrocommunity.completion.blink-cmp-git" },
-  -- { import = "astrocommunity.completion.blink-cmp" },
+  { import = "astrocommunity.completion.blink-cmp" },
 
   -- Debugging
   { import = "astrocommunity.debugging.nvim-dap-repl-highlights" },
@@ -62,7 +62,7 @@ return {
 
   -- Indent
   { import = "astrocommunity.indent.indent-blankline-nvim" },
-  { import = "astrocommunity.indent.indent-rainbowline" },
+  -- { import = "astrocommunity.indent.indent-rainbowline" },
   { import = "astrocommunity.indent.indent-tools-nvim" },
   { import = "astrocommunity.indent.snacks-indent-hlchunk" },
 
