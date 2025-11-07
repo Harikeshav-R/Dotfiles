@@ -26,8 +26,8 @@ $env.path ++= ["~/.dotnet/tools"]
 $env.path ++= ["/usr/local/share/dotnet"]
 
 # Set default editor to nvim
-$env.config.buffer_editor = "nvim"
-$env.EDITOR = "nvim"
+$env.config.buffer_editor = "edit"
+$env.EDITOR = "edit"
 
 # Use system `open` command
 alias nu-open = open
@@ -39,6 +39,8 @@ alias open = ^open
 alias lsl = ls -l
 alias lsa = ls -a
 
+alias rmrf = rm --recursive
+
 alias bi = brew install
 alias bic = brew install --cask
 
@@ -48,7 +50,7 @@ alias avante = neovide --frame transparent --maximized --fork -- -c "lua vim.def
 
 # Misc nu settings
 $env.config.display_errors.exit_code = true
-$env.config.rm.always_trash = true
+$env.config.rm.always_trash = false
 $env.config.edit_mode = "vi"
 
 # Colorscheme
