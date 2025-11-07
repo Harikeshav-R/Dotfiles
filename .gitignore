@@ -1,2 +1,5 @@
 # Ignore nushell history
 history.txt
+
+# Ignore secrets
+env.nu
