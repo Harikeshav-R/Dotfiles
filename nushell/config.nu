@@ -42,6 +42,10 @@ alias lsa = ls -a
 alias bi = brew install
 alias bic = brew install --cask
 
+alias edit = neovide --frame transparent --maximized --fork
+
+alias avante = neovide --frame transparent --maximized --fork -- -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"
+
 # Misc nu settings
 $env.config.display_errors.exit_code = true
 $env.config.rm.always_trash = true
@@ -53,6 +57,9 @@ source "~/library/Application Support/nushell/colorschemes/catppuccin_mocha.nu"
 # Spicetify
 $env.SPICETIFY_INSTALL = "~/.spicetify"
 $env.path ++= ["~/.spicetify"]
+
+# Cargo
+source $"($nu.home-path)/.cargo/env.nu"
 
 # Starship
 mkdir ($nu.data-dir | path join "vendor/autoload")
