@@ -1,0 +1,2 @@
+#!/bin/sh
+neovide --frame transparent --maximized --fork "$@"
