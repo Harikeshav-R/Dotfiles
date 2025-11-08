@@ -25,7 +25,7 @@ return {
   opts = {
     options = {
       o = {
-        guifont = "FiraCode Nerd Font:h14",
+        guifont = "JetbrainsMono Nerd Font:h14",
       },
       g = {
         neovide_opacity = 0.25,
