@@ -35,6 +35,7 @@ alias open = ^open
 
 # Aliases
 
+alias venv-activate = overlay use .venv/bin/activate.nu
 
 alias lsl = ls -l
 alias lsa = ls -a
@@ -44,7 +45,7 @@ alias rmrf = rm --recursive
 alias bi = brew install
 alias bic = brew install --cask
 
-alias edit = neovide --frame transparent --maximized --fork
+# alias edit = neovide --frame transparent --maximized --fork
 
 alias avante = neovide --frame transparent --maximized --fork -- -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"
 
