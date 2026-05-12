@@ -133,20 +133,20 @@ format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:green)]($style)'
 
 [docker_context]
 symbol = ""
-style = "bg:sapphire"
-format = '[[ $symbol( $context) ](fg:crust bg:sapphire)]($style)'
+style = "bg:blue"
+format = '[[ $symbol( $context) ](fg:crust bg:blue)]($style)'
 
 [conda]
 symbol = "  "
-style = "fg:crust bg:sapphire"
+style = "fg:crust bg:blue"
 format = '[$symbol$environment ]($style)'
 ignore_base = false
 
 [time]
 disabled = false
 time_format = "%R"
-style = "bg:lavender"
-format = '[[  $time ](fg:crust bg:lavender)]($style)'
+style = "bg:mauve"
+format = '[[  $time ](fg:crust bg:mauve)]($style)'
 
 [line_break]
 disabled = true
@@ -156,14 +156,14 @@ disabled = false
 success_symbol = '[❯](bold fg:green)'
 error_symbol = '[❯](bold fg:red)'
 vimcmd_symbol = '[❮](bold fg:green)'
-vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
-vimcmd_replace_symbol = '[❮](bold fg:lavender)'
+vimcmd_replace_one_symbol = '[❮](bold fg:mauve)'
+vimcmd_replace_symbol = '[❮](bold fg:mauve)'
 vimcmd_visual_symbol = '[❮](bold fg:yellow)'
 
 [cmd_duration]
 show_milliseconds = true
 format = " in $duration "
-style = "bg:lavender"
+style = "bg:mauve"
 disabled = false
 show_notifications = true
 min_time_to_notify = 45000

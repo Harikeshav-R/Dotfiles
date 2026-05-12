@@ -1,155 +1,119 @@
-local prefix = "<Leader>A"
+---@type LazySpec
 return {
   "yetone/avante.nvim",
-  build = vim.fn.has "win32" == 1 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-    or "make",
-  event = "User AstroFile", -- load on file open because Avante manages it's own bindings
-  cmd = {
-    "AvanteAsk",
-    "AvanteBuild",
-    "AvanteEdit",
-    "AvanteRefresh",
-    "AvanteSwitchProvider",
-    "AvanteShowRepoMap",
-    "AvanteModels",
-    "AvanteChat",
-    "AvanteToggle",
-    "AvanteClear",
-    "AvanteFocus",
-    "AvanteStop",
-  },
-  dependencies = {
-    { "stevearc/dressing.nvim", optional = true },
-    "nvim-lua/plenary.nvim",
-    "MunifTanjim/nui.nvim",
-    { "AstroNvim/astrocore", opts = function(_, opts) opts.mappings.n[prefix] = { desc = " Avante" } end },
-  },
+  event = "VeryLazy",
+  lazy = false,
+  version = false, -- set this if you want to always pull the latest change
   opts = {
+    -- Provider Settings
+    provider = "copilot",
+    auto_suggestions_provider = "copilot",
+
+    -- Behavior Settings
+    behaviour = {
+      auto_suggestions = true, -- Experimental: inline suggestions like Cursor
+      auto_set_highlight_group = true,
+      auto_set_keymaps = true,
+      auto_apply_diff_after_generation = false,
+      support_paste_from_clipboard = true,
+    },
+
+    -- UI Settings
+    windows = {
+      position = "right", -- the position of the sidebar
+      wrap = true, -- similar to vim.o.wrap
+      width = 40, -- default % based on available width
+      sidebar_header = {
+        enabled = true,
+        align = "center",
+        rounded = true,
+      },
+      input = {
+        prefix = "❯ ",
+        height = 8, -- height of the input window
+      },
+      edit = {
+        border = "rounded",
+        start_insert = true, -- Start insert mode when opening the edit window
+      },
+      ask = {
+        floating = false, -- Open the 'AvanteAsk' prompt in a floating window
+        start_insert = true, -- Start insert mode when opening the ask window
+        border = "rounded",
+      },
+    },
+
+    -- Keybindings (Standard Neovim `<leader>` bindings)
     mappings = {
-      ask = prefix .. "<CR>",
-      edit = prefix .. "e",
-      refresh = prefix .. "r",
-      new_ask = prefix .. "n",
-      focus = prefix .. "f",
-      select_model = prefix .. "?",
-      stop = prefix .. "S",
-      select_history = prefix .. "h",
+      ask = "<leader>aa",
+      edit = "<leader>ae",
+      refresh = "<leader>ar",
+      focus = "<leader>af",
       toggle = {
-        default = prefix .. "t",
-        debug = prefix .. "d",
-        hint = prefix .. "H",
-        suggestion = prefix .. "s",
-        repomap = prefix .. "R",
+        default = "<leader>at",
+        debug = "<leader>ad",
+        hint = "<leader>ah",
+        suggestion = "<leader>as",
+        rep = "<leader>aR",
       },
       diff = {
         next = "]c",
         prev = "[c",
       },
-      files = {
-        add_current = prefix .. ".",
-        add_all_buffers = prefix .. "B",
+      suggestion = {
+        accept = "<M-l>",
+        next = "<M-]>",
+        prev = "<M-[>",
+        dismiss = "<C-]>",
+      },
+      jump = {
+        next = "]]",
+        prev = "[[",
+      },
+      submit = {
+        normal = "<CR>",
+        insert = "<C-s>",
       },
     },
+
+    -- Prompt configurations
+    hints = { enabled = true },
   },
-  specs = { -- configure optional plugins
-    { "AstroNvim/astroui", opts = { icons = { Avante = "" } } },
+  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+  build = "make",
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter",
+    "stevearc/dressing.nvim",
+    "nvim-lua/plenary.nvim",
+    "MunifTanjim/nui.nvim",
+    --- The below dependencies are optional,
+    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+    "nvim-tree/nvim-web-devicons",
+    "zbirenbaum/copilot.lua", -- for providers='copilot'
     {
-      "Kaiser-Yang/blink-cmp-avante",
-      lazy = true,
-      specs = {
-        {
-          "Saghen/blink.cmp",
-          optional = true,
-          opts = {
-            sources = {
-              default = { "avante" },
-              providers = {
-                avante = { module = "blink-cmp-avante", name = "Avante" },
-              },
-            },
-          },
-        },
-      },
-    },
-    { -- if copilot.lua is available, default to copilot provider
-      "zbirenbaum/copilot.lua",
-      optional = true,
-      specs = {
-        {
-          "yetone/avante.nvim",
-          opts = {
-            provider = "copilot",
-            auto_suggestions_provider = "copilot",
-          },
-        },
-      },
-    },
-    {
-      -- make sure `Avante` is added as a filetype
-      "MeanderingProgrammer/render-markdown.nvim",
-      optional = true,
-      opts = function(_, opts)
-        if not opts.file_types then opts.file_types = { "markdown" } end
-        opts.file_types = require("astrocore").list_insert_unique(opts.file_types, { "Avante" })
-      end,
-    },
-    {
-      -- make sure `Avante` is added as a filetype
-      "OXY2DEV/markview.nvim",
-      optional = true,
-      opts = function(_, opts)
-        if not opts.preview then opts.preview = {} end
-        if not opts.preview.filetypes then opts.preview.filetypes = { "markdown", "quarto", "rmd" } end
-        opts.preview.filetypes = require("astrocore").list_insert_unique(opts.preview.filetypes, { "Avante" })
-      end,
-    },
-    {
-      "folke/snacks.nvim",
-      optional = true,
-      specs = {
-        {
-          "yetone/avante.nvim",
-          opts = {
-            selector = {
-              provider = "snacks",
-            },
-          },
-        },
-      },
-    },
-    {
-      "nvim-neo-tree/neo-tree.nvim",
-      optional = true,
+      -- support for image pasting
+      "HakonHarnes/img-clip.nvim",
+      event = "VeryLazy",
       opts = {
-        filesystem = {
-          commands = {
-            avante_add_files = function(state)
-              local node = state.tree:get_node()
-              local filepath = node:get_id()
-              local relative_path = require("avante.utils").relative_path(filepath)
-
-              local sidebar = require("avante").get()
-
-              local open = sidebar:is_open()
-              -- ensure avante sidebar is open
-              if not open then
-                require("avante.api").ask()
-                sidebar = require("avante").get()
-              end
-
-              sidebar.file_selector:add_selected_file(relative_path)
-
-              -- remove neo tree buffer
-              if not open then sidebar.file_selector:remove_selected_file "neo-tree filesystem [1]" end
-            end,
+        -- recommended settings
+        default = {
+          embed_image_as_base64 = false,
+          prompt_for_file_name = false,
+          drag_and_drop = {
+            insert_mode = true,
           },
-          window = {
-            mappings = {
-              ["oa"] = "avante_add_files",
-            },
-          },
+          -- required for Windows users
+          use_absolute_path = true,
         },
       },
+    },
+    {
+      -- Make sure to set this up properly if you have lazy=true
+      'MeanderingProgrammer/render-markdown.nvim',
+      opts = {
+        file_types = { "markdown", "Avante" },
+      },
+      ft = { "markdown", "Avante" },
     },
   },
 }

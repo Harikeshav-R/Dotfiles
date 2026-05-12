@@ -1,0 +1,12 @@
+[user]
+	name = Harikeshav Rameshkumar
+	email = r.harikeshav@gmail.com
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[core]
+	autocrlf = input
