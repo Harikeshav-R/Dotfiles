@@ -61,4 +61,12 @@ if [[ "$SHELL" != "$NU_PATH" ]]; then
     chsh -s "$NU_PATH"
 fi
 
-echo "✨ Bootstrap Complete! Please restart your terminal."
+echo "✨ Bootstrap Complete!"
+
+read -p "Do you want to apply macOS system defaults? (y/n) " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    ./macos.sh
+fi
+
+echo "🚀 All set! Please restart your terminal."
