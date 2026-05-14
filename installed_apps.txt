@@ -1,0 +1,44 @@
+AeroSpace
+Antigravity
+Cap
+Claude Code URL Handler
+Compressor
+CrossOver
+DaisyDisk
+DeskPad
+Docker
+Final Cut Pro
+Firefox
+Google Chrome
+iTerm
+Ivanti Secure Access
+LockDown Browser
+Microsoft 365 Copilot Shim
+Microsoft Defender Shim
+Microsoft Excel
+Microsoft OneNote
+Microsoft Outlook
+Microsoft PowerPoint
+Microsoft Teams
+Microsoft Word
+Motion
+OneDrive
+Postman
+Prism Launcher
+PyCharm
+Raycast
+Safari
+Shottr
+Sideloadly
+Spotify
+Surfshark
+The Unarchiver
+Trae
+Transmission
+uBlock Origin Lite
+Visual Studio Code
+VLC
+VMware Fusion
+WhatsApp
+Xcode
+zoom.us
