@@ -26,10 +26,6 @@ brew "fd"
 brew "ffmpeg"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
-# Interact with Google Gemini AI models from the command-line
-brew "gemini-cli"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -50,16 +46,14 @@ brew "neovim"
 brew "neovide"
 # Small build system for use with gyp or CMake
 brew "ninja"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
 # Modern shell for the GitHub era
 brew "nushell"
 # Fast, disk space efficient package manager
 brew "pnpm"
-# PDF rendering library (based on the xpdf-3.0 code base)
-brew "poppler"
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
-# Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
-brew "prettier"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Cross-shell prompt for astronauts
@@ -72,34 +66,26 @@ brew "tree"
 brew "uv"
 # Generator for LS_COLORS with support for multiple color themes
 brew "vivid"
-# Watch files and take action when they change
-brew "watchman"
 # Best command-line tool to install and switch between multiple versions of Xcode
 brew "xcodes"
 # Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
-# Feature-rich command-line audio/video downloader
-brew "yt-dlp"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
-# Supabase CLI
-brew "supabase/tap/supabase"
 # Comprehensive macOS cleanup and application uninstall tool
 brew "tw93/tap/mole"
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "nikitabobko/tap/aerospace"
-# AI Coding Agent IDE
-cask "antigravity"
+# Terminal interface for Antigravity agents
+cask "antigravity-cli"
 # Screen recording software
 cask "cap"
 # Terminal-based AI coding assistant
 cask "claude-code"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
-# Virtual monitor for screen sharing
-cask "deskpad"
 # App to build and share containerised applications and microservices
 cask "docker-desktop"
 # Developer platform
@@ -114,8 +100,6 @@ cask "iterm2"
 cask "microsoft-office-businesspro"
 # Collaboration platform for API development
 cask "postman"
-# Minecraft launcher
-cask "prismlauncher"
 # IDE for professional Python development
 cask "pycharm"
 # Music streaming service
@@ -128,17 +112,11 @@ cask "the-unarchiver"
 cask "trae"
 # Open-source BitTorrent client
 cask "transmission"
-# Open-source code editor
-cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
 # Native desktop client for WhatsApp
 cask "whatsapp"
 # Video communication and virtual meeting platform
 cask "zoom"
-vscode "ms-python.debugpy"
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "ms-python.vscode-python-envs"
 cargo "cargo-deny"
 cargo "cargo-edit"
