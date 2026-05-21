@@ -59,6 +59,15 @@ ln -sf "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 ln -sf "$DOTFILES_DIR/neovide.lua" "$HOME/neovide.lua"
 echo "Symlinked individual files."
 
+echo "🖥️ Configuring iTerm2 to use settings from Dotfiles..."
+if [ -d "$DOTFILES_DIR/iterm2" ]; then
+    defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$DOTFILES_DIR/iterm2"
+    defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+    echo "iTerm2 configured to load preferences from $DOTFILES_DIR/iterm2"
+else
+    echo "⚠️ iTerm2 preferences directory not found in dotfiles!"
+fi
+
 echo "🐚 Generating Nushell integration cache files..."
 # Create cache and config/env-specific directories
 mkdir -p "$HOME/.cache/zoxide"
