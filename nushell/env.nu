@@ -37,6 +37,10 @@ $env.PATH = (
 source ~/.cargo/env.nu
 source ~/.cache/starship/init.nu
 
+# Editor Config
+$env.EDITOR = "neovide --frame transparent --maximized --fork"
+$env.VISUAL = "neovide --frame transparent --maximized --fork"
+
 # Vivid LS_COLORS
 $env.LS_COLORS = (vivid generate catppuccin-mocha | str trim)
 

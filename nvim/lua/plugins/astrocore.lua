@@ -47,6 +47,7 @@ return {
         scrolloff = 8, -- keep 8 lines above/below cursor
         sidescrolloff = 8, -- keep 8 columns to left/right of cursor
         termguicolors = true, -- enable 24-bit RGB colors
+        shell = "zsh",
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)

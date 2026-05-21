@@ -108,7 +108,7 @@ alias la = eza -a -l -g --icons
 alias l = eza --icons
 alias tree = eza --tree --icons
 alias cat = bat
-alias v = nvim
+alias v = neovide --frame transparent --maximized --fork
 
 # Load zoxide
 source ~/.cache/zoxide/init.nu
@@ -136,11 +136,11 @@ $env.config.hooks.env_change.PWD ++= [
 # Maximalist Workflow Tools
 alias lg = lazygit
 
-# Fuzzy find and edit file (using fd, fzf, nvim)
+# Fuzzy find and edit file (using fd, fzf, neovide)
 def --env fv [] {
     let file = (fd --type f --hidden --exclude .git | fzf)
     if ($file != "") {
-        nvim $file
+        neovide --frame transparent --maximized --fork $file
     }
 }
 

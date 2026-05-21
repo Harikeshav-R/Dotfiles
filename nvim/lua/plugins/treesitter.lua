@@ -25,6 +25,7 @@ return {
         "rust",
         "go",
         "cpp",
+        "nu",
       },
     },
   },
