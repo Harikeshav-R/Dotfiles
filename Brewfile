@@ -58,8 +58,11 @@ brew "pre-commit"
 brew "ripgrep"
 # Cross-shell prompt for astronauts
 brew "starship"
+# CLI tool to customize Spotify client
+brew "spicetify-cli"
 # Programmatically correct mistyped console commands
 brew "thefuck"
+
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Extremely fast Python package installer and resolver, written in Rust
@@ -86,13 +89,21 @@ cask "cap"
 cask "claude-code"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
+# Run Windows applications on Mac
+cask "crossover"
+# Disk space analyzer
+cask "daisydisk"
 # App to build and share containerised applications and microservices
 cask "docker-desktop"
+
 # Developer platform
 cask "dotnet-sdk"
 # Web browser
 cask "firefox"
+# Web browser
+cask "google-chrome"
 cask "font-fira-code-nerd-font"
+
 cask "font-jetbrains-mono-nerd-font"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
@@ -100,8 +111,12 @@ cask "iterm2"
 cask "microsoft-office-businesspro"
 # Collaboration platform for API development
 cask "postman"
+# Productivity folder/app launcher
+cask "raycast"
 # IDE for professional Python development
 cask "pycharm"
+# Screenshot tool
+cask "shottr"
 # Music streaming service
 cask "spotify"
 # VPN client for secure internet access and private browsing

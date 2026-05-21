@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e # Exit immediately if a command exits with a non-zero status.
 
+# Get the absolute path to the directory containing this script
+DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 echo "🚀 Starting macOS Bootstrap..."
 
 # Ask for the administrator password upfront
@@ -22,22 +25,27 @@ fi
 echo "🍺 Installing Homebrew..."
 if ! command -v brew &>/dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# Ensure brew is in the PATH of the current script execution environment
+if [ -f "/opt/homebrew/bin/brew" ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -f "/usr/local/bin/brew" ]; then
+    eval "$(/usr/local/bin/brew shellenv)"
 fi
 
 brew update
 brew upgrade
 
 echo "📦 Restoring packages from Brewfile..."
-brew bundle install --file=Brewfile
+brew bundle install --file="$DOTFILES_DIR/Brewfile"
 
 echo "🔗 Symlinking Dotfiles..."
-DOTFILES_DIR="$HOME/Developer/Dotfiles"
 CONFIG_DIR="$HOME/.config"
 mkdir -p "$CONFIG_DIR"
 
-# Config directories to symlink
-for app in nushell aerospace bat nvim gh raycast spicetify thefuck zellij; do
+# Config directories to symlink (added git)
+for app in nushell aerospace bat nvim gh raycast spicetify thefuck zellij git; do
     if [ -d "$DOTFILES_DIR/$app" ]; then
         rm -rf "$CONFIG_DIR/$app"
         ln -s "$DOTFILES_DIR/$app" "$CONFIG_DIR/$app"
@@ -51,22 +59,45 @@ ln -sf "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 ln -sf "$DOTFILES_DIR/neovide.lua" "$HOME/neovide.lua"
 echo "Symlinked individual files."
 
+echo "🐚 Generating Nushell integration cache files..."
+# Create cache and config/env-specific directories
+mkdir -p "$HOME/.cache/zoxide"
+mkdir -p "$HOME/.cache/carapace"
+mkdir -p "$HOME/.cache/atuin"
+mkdir -p "$HOME/.cache/starship"
+mkdir -p "$HOME/.cargo"
+
+# Pre-generate Nushell scripts to prevent startup parse-time compile errors
+zoxide init nushell > "$HOME/.cache/zoxide/init.nu"
+carapace _carapace nushell > "$HOME/.cache/carapace/init.nu"
+atuin init nu > "$HOME/.cache/atuin/init.nu"
+starship init nu > "$HOME/.cache/starship/init.nu"
+
+# Create a baseline cargo env script for Nushell
+echo 'use std/util "path add"; path add $"($nu.home-dir)/.cargo/bin"' > "$HOME/.cargo/env.nu"
+echo "Nushell integration cache files generated."
+
 echo "🐚 Setting Nushell as default shell..."
-NU_PATH=$(which nu)
-if ! grep -q "$NU_PATH" /etc/shells; then
-    echo "$NU_PATH" | sudo tee -a /etc/shells
+NU_PATH=$(command -v nu || true)
+if [ -n "$NU_PATH" ]; then
+    if ! grep -q "$NU_PATH" /etc/shells; then
+        echo "$NU_PATH" | sudo tee -a /etc/shells
+    fi
+
+    if [[ "$SHELL" != "$NU_PATH" ]]; then
+        sudo chsh -s "$NU_PATH" "$USER"
+    fi
+else
+    echo "⚠️ Nushell binary not found! Skipping default shell setup."
 fi
 
-if [[ "$SHELL" != "$NU_PATH" ]]; then
-    chsh -s "$NU_PATH"
-fi
 
 echo "✨ Bootstrap Complete!"
 
 read -p "Do you want to apply macOS system defaults? (y/n) " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-    ./macos.sh
+    "$DOTFILES_DIR/macos.sh"
 fi
 
 echo "🚀 All set! Please restart your terminal."
