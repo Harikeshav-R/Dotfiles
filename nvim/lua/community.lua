@@ -9,6 +9,7 @@ return {
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.utility.noice-nvim" },
   { import = "astrocommunity.bars-and-lines.dropbar-nvim" },
+  { import = "astrocommunity.recipes.heirline-vscode-winbar" },
   { import = "astrocommunity.scrolling.mini-animate" },
   { import = "astrocommunity.scrolling.neoscroll-nvim" },
   { import = "astrocommunity.scrolling.satellite-nvim" },
@@ -16,6 +17,7 @@ return {
   { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
   { import = "astrocommunity.color.ccc-nvim" },
   { import = "astrocommunity.startup.alpha-nvim" },
+  { import = "astrocommunity.bars-and-lines.smartcolumn-nvim" },
 
   -- Languages
   { import = "astrocommunity.pack.lua" },
@@ -35,6 +37,12 @@ return {
   -- { import = "astrocommunity.markdown-and-latex.markmap-nvim" },
   { import = "astrocommunity.color.headlines-nvim" },
   { import = "astrocommunity.pack.rust" },
+  -- { import = "astrocommunity.pack.go" }, -- Requires 'go' to be installed on the system
+  { import = "astrocommunity.pack.ruby" },
+  { import = "astrocommunity.pack.bash" },
+  { import = "astrocommunity.pack.terraform" },
+  { import = "astrocommunity.pack.proto" },
+  -- { import = "astrocommunity.pack.sql" }, -- Some SQL tools require 'go'
   { import = "astrocommunity.pack.just" },
   { import = "astrocommunity.pack.cmake" },
   { import = "astrocommunity.pack.cpp" },
@@ -52,9 +60,12 @@ return {
   -- Diagnostics
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   { import = "astrocommunity.diagnostics.tiny-inline-diagnostic-nvim" },
+  { import = "astrocommunity.diagnostics.lsp_lines-nvim" },
 
   -- Git
   { import = "astrocommunity.git.diffview-nvim" },
+  { import = "astrocommunity.git.neogit" },
+  { import = "astrocommunity.git.blame-nvim" },
 
   -- Motion
   { import = "astrocommunity.motion.flash-nvim" },
@@ -62,8 +73,9 @@ return {
   { import = "astrocommunity.motion.mini-surround" },
 
   -- Search / Fuzzy Finder
-  { import = "astrocommunity.search.nvim-spectre" },
+  { import = "astrocommunity.search.grug-far-nvim" },
   { import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
+  { import = "astrocommunity.editing-support.telescope-undo-nvim" },
 
   -- Editing Support
   { import = "astrocommunity.editing-support.todo-comments-nvim" },
@@ -73,9 +85,15 @@ return {
   { import = "astrocommunity.editing-support.undotree" },
   { import = "astrocommunity.editing-support.comment-box-nvim" },
   { import = "astrocommunity.editing-support.nvim-devdocs" },
+  { import = "astrocommunity.editing-support.zen-mode-nvim" },
+  { import = "astrocommunity.color.twilight-nvim" },
+  { import = "astrocommunity.editing-support.yanky-nvim" },
 
   -- File Explorer
   { import = "astrocommunity.file-explorer.oil-nvim" },
+
+  -- Project Management
+  { import = "astrocommunity.project.project-nvim" },
 
   -- Media / Analytics / Social
   { import = "astrocommunity.media.image-nvim" },

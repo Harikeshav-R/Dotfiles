@@ -1,7 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
--- Customize Mason
-
 ---@type LazySpec
 return {
   -- use mason-tool-installer for automatically installing Mason packages
@@ -11,17 +7,55 @@ return {
     opts = {
       -- Make sure to use the names found in `:Mason`
       ensure_installed = {
-        -- install language servers
+        -- LSPs
+        "basedpyright",
+        "bash-language-server",
+        "clangd",
+        "css-lsp",
+        "deno",
+        "docker-language-server",
+        "emmet-ls",
+        "eslint-lsp",
+        "html-lsp",
+        "json-lsp",
+        "just-lsp",
         "lua-language-server",
+        "marksman",
+        "neocmakelsp",
+        "ruby-lsp",
+        "tailwindcss-language-server",
+        "taplo",
+        "terraform-ls",
+        "vtsls",
+        "yaml-language-server",
 
-        -- install formatters
+        -- Formatters / Linters
+        "buf",
+        "clang-format",
+        "cpplint",
+        "hadolint",
+        "prettierd",
+        "rubyfmt",
+        "ruff",
+        "selene",
+        "shellcheck",
+        "shfmt",
+        "sqlfluff",
         "stylua",
+        "tflint",
+        "tfsec",
 
-        -- install debuggers
+        -- Debuggers
+        "bash-debug-adapter",
+        "codelldb",
         "debugpy",
+        "js-debug-adapter",
 
-        -- install any other package
+        -- Other Tools
+        "bacon",
+        "pyrefly",
         "tree-sitter-cli",
+        "ty",
       },
     },
   },

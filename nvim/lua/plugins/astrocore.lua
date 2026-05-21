@@ -43,6 +43,10 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
+        cursorline = true, -- highlight the current line
+        scrolloff = 8, -- keep 8 lines above/below cursor
+        sidescrolloff = 8, -- keep 8 columns to left/right of cursor
+        termguicolors = true, -- enable 24-bit RGB colors
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -99,11 +103,32 @@ return {
         ["<Leader>xl"] = { "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", desc = "LSP Definitions / references / ... (Trouble)" },
         ["<Leader>xL"] = { "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
         ["<Leader>xq"] = { "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
+        ["<Leader>uy"] = { function() require("lsp_lines").toggle() end, desc = "Toggle lsp_lines" },
 
         -- Git (Diffview)
         ["<Leader>gd"] = { "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" },
         ["<Leader>gh"] = { "<cmd>DiffviewFileHistory %<cr>", desc = "Diffview File History" },
         ["<Leader>gx"] = { "<cmd>DiffviewClose<cr>", desc = "Diffview Close" },
+
+        -- Git (Neogit & Blame)
+        ["<Leader>gn"] = { "<cmd>Neogit<cr>", desc = "Neogit" },
+        ["<Leader>gb"] = { "<cmd>BlameToggle<cr>", desc = "Toggle Blame" },
+
+        -- Smart Splits
+        ["<C-h>"] = { function() require("smart-splits").move_cursor_left() end, desc = "Move to left split" },
+        ["<C-j>"] = { function() require("smart-splits").move_cursor_down() end, desc = "Move to below split" },
+        ["<C-k>"] = { function() require("smart-splits").move_cursor_up() end, desc = "Move to above split" },
+        ["<C-l>"] = { function() require("smart-splits").move_cursor_right() end, desc = "Move to right split" },
+        ["<C-Left>"] = { function() require("smart-splits").resize_left() end, desc = "Resize split left" },
+        ["<C-Down>"] = { function() require("smart-splits").resize_down() end, desc = "Resize split down" },
+        ["<C-Up>"] = { function() require("smart-splits").resize_up() end, desc = "Resize split up" },
+        ["<C-Right>"] = { function() require("smart-splits").resize_right() end, desc = "Resize split right" },
+
+        -- Yanky
+        ["<Leader>p"] = { "<cmd>Telescope yanky history<cr>", desc = "Yank History" },
+
+        -- Zen Mode
+        ["<Leader>z"] = { "<cmd>ZenMode<cr>", desc = "Zen Mode" },
 
         -- Database (Dadbod)
         ["<Leader>D"] = { desc = "Database" },
@@ -112,11 +137,11 @@ return {
         ["<Leader>Dr"] = { "<cmd>DBUIRenameBuffer<cr>", desc = "Rename DBUI Buffer" },
         ["<Leader>Dl"] = { "<cmd>DBUILastQueryInfo<cr>", desc = "Last Query Info" },
 
-        -- Search & Replace (Spectre)
-        ["<Leader>S"] = { desc = "Search / Replace (Spectre)" },
-        ["<Leader>Ss"] = { function() require("spectre").toggle() end, desc = "Toggle Spectre" },
-        ["<Leader>Sw"] = { function() require("spectre").open_visual({select_word=true}) end, desc = "Search current word" },
-        ["<Leader>Sf"] = { function() require("spectre").open_file_search({select_word=true}) end, desc = "Search on current file" },
+        -- Search & Replace (Grug-far)
+        ["<Leader>S"] = { desc = "Search / Replace (Grug-far)" },
+        ["<Leader>Ss"] = { function() require("grug-far").open() end, desc = "Open Grug-far" },
+        ["<Leader>Sw"] = { function() require("grug-far").open({ prefills = { search = vim.fn.expand("<cword>") } }) end, desc = "Search current word" },
+        ["<Leader>Sf"] = { function() require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } }) end, desc = "Search on current file" },
 
         -- Refactoring
         ["<Leader>R"] = { desc = "Refactoring" },
@@ -171,6 +196,9 @@ return {
         -- Zoxide
         ["<Leader>fz"] = { "<cmd>Telescope zoxide list<cr>", desc = "Find Zoxide" },
 
+        -- Telescope Undo
+        ["<Leader>fu"] = { "<cmd>Telescope undo<cr>", desc = "Find Undos" },
+
         -- SnipRun
         ["<Leader>os"] = { "<cmd>SnipRun<cr>", desc = "SnipRun" },
 
@@ -190,6 +218,18 @@ return {
         ["<Leader>C"] = { desc = "Color" },
         ["<Leader>Cc"] = { "<cmd>CccPick<cr>", desc = "Color Picker" },
         ["<Leader>Cv"] = { "<cmd>CccConvert<cr>", desc = "Color Convert" },
+
+        -- Window Management
+        ["<Leader>w"] = { desc = "Window" },
+        ["<Leader>ww"] = { "<C-w>w", desc = "Other window" },
+        ["<Leader>wd"] = { "<C-w>c", desc = "Delete window" },
+        ["<Leader>w-"] = { "<C-w>s", desc = "Split window below" },
+        ["<Leader>w|"] = { "<C-w>v", desc = "Split window right" },
+        ["<Leader>w2"] = { "<C-w>v", desc = "Split window right" },
+
+        -- Search enhancements
+        ["n"] = { "nzzzv", desc = "Next search result" },
+        ["N"] = { "Nzzzv", desc = "Prev search result" },
       },
       v = {
         -- Visual mode refactoring
