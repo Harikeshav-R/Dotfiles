@@ -40,14 +40,14 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-# Disable automatic capitalization as it’s annoying when typing code
-defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+# Enable automatic capitalization
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool true
 
 # Disable smart dashes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
-# Disable automatic period substitution as it’s annoying when typing code
-defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+# Enable automatic period substitution
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool true
 
 # Disable smart quotes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
@@ -67,10 +67,10 @@ defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# Trackpad: map bottom right corner to right-click
-defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 2
+# Trackpad: map secondary click to two-finger click/tap
+defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 0
 defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 0
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
 
 # Disable “natural” (Lion-style) scrolling
@@ -171,13 +171,13 @@ defaults write com.apple.dock "mru-spaces" -bool false
 
 echo "  › Menu Bar"
 
-# Menu Bar: Show seconds in clock
-# [Current Setting: Enabled (1)]
-defaults write com.apple.menuextra.clock ShowSeconds -bool true
-
-# Menu Bar: Don't show Day of Week
+# Menu Bar: Don't show seconds in clock
 # [Current Setting: Disabled (0)]
-defaults write com.apple.menuextra.clock ShowDayOfWeek -bool false
+defaults write com.apple.menuextra.clock ShowSeconds -bool false
+
+# Menu Bar: Show Day of Week
+# [Current Setting: Enabled (1)]
+defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
 
 ###############################################################################
 # Screen & Activity Monitor                                                   #
