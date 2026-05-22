@@ -44,14 +44,28 @@ echo "🔗 Symlinking Dotfiles..."
 CONFIG_DIR="$HOME/.config"
 mkdir -p "$CONFIG_DIR"
 
-# Config directories to symlink (added git)
-for app in nushell aerospace bat nvim gh raycast spicetify thefuck zellij git; do
+# Config directories to symlink (added git, sketchybar, borders, kitty, skhd, yabai)
+for app in nushell aerospace bat nvim gh raycast spicetify thefuck zellij git sketchybar borders kitty skhd yabai; do
     if [ -d "$DOTFILES_DIR/$app" ]; then
         rm -rf "$CONFIG_DIR/$app"
         ln -s "$DOTFILES_DIR/$app" "$CONFIG_DIR/$app"
         echo "Symlinked ~/.config/$app"
     fi
 done
+
+# Ensure sketchybarrc, yabairc, bordersrc, and helper scripts are executable
+if [ -f "$CONFIG_DIR/sketchybar/sketchybarrc" ]; then
+    chmod +x "$CONFIG_DIR/sketchybar/sketchybarrc"
+    echo "Made ~/.config/sketchybar/sketchybarrc executable."
+fi
+if [ -f "$CONFIG_DIR/yabai/yabairc" ]; then
+    chmod +x "$CONFIG_DIR/yabai/yabairc"
+    echo "Made ~/.config/yabai/yabairc executable."
+fi
+if [ -f "$CONFIG_DIR/borders/bordersrc" ]; then
+    chmod +x "$CONFIG_DIR/borders/bordersrc"
+    echo "Made ~/.config/borders/bordersrc executable."
+fi
 
 # Home directory files to symlink
 ln -sf "$DOTFILES_DIR/starship.toml" "$CONFIG_DIR/starship.toml"

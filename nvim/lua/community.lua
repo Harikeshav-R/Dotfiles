@@ -38,7 +38,7 @@ return {
   { import = "astrocommunity.color.headlines-nvim" },
   { import = "astrocommunity.pack.rust" },
   -- { import = "astrocommunity.pack.go" }, -- Requires 'go' to be installed on the system
-  { import = "astrocommunity.pack.ruby" },
+  -- { import = "astrocommunity.pack.ruby" },
   { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.terraform" },
   { import = "astrocommunity.pack.proto" },

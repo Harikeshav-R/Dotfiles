@@ -3,3 +3,7 @@ history.txt
 
 # Ignore secrets
 env.nu
+
+# Ignore local agent CLI configurations/sessions
+.antigravitycli/
+

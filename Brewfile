@@ -2,6 +2,11 @@ tap "d12frosted/emacs-plus"
 tap "nikitabobko/tap"
 tap "supabase/tap"
 tap "tw93/tap"
+tap "felixkratz/formulae"
+tap "koekeishiya/formulae"
+tap "shaunsingh/sfmono-nerd-font-ligaturized"
+
+
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -63,6 +68,26 @@ brew "spicetify-cli"
 # Programmatically correct mistyped console commands
 brew "thefuck"
 
+# Status bar replacement for macOS
+brew "sketchybar"
+# Window border manager for macOS
+brew "borders"
+# Keyboard shortcut daemon for macOS
+brew "skhd"
+# Tiling window manager for macOS
+brew "yabai"
+# Lua interpreter for SketchyBar config
+brew "lua"
+# Switch audio source from terminal
+brew "switchaudio-osx"
+# Now playing media CLI
+brew "nowplaying-cli"
+# Network traffic monitor
+brew "ifstat"
+# JSON parser
+brew "jq"
+
+
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Extremely fast Python package installer and resolver, written in Rust
@@ -103,8 +128,16 @@ cask "firefox"
 # Web browser
 cask "google-chrome"
 cask "font-fira-code-nerd-font"
-
 cask "font-jetbrains-mono-nerd-font"
+cask "font-sketchybar-app-font"
+cask "sf-symbols"
+cask "kitty"
+cask "font-sf-mono"
+cask "font-sf-pro"
+cask "font-sf-mono-nerd-font-ligaturized"
+
+
+
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Office suite

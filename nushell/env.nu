@@ -27,6 +27,7 @@ $env.PATH = (
     $env.PATH
     | split row (char esep)
     | prepend /opt/homebrew/bin
+    | prepend /opt/homebrew/opt/ruby/bin
     | append /usr/local/bin
     | append $"($env.HOME)/.cargo/bin"
     | append $"($env.HOME)/.local/bin"
@@ -38,8 +39,8 @@ source ~/.cargo/env.nu
 source ~/.cache/starship/init.nu
 
 # Editor Config
-$env.EDITOR = "neovide --frame transparent --maximized --fork"
-$env.VISUAL = "neovide --frame transparent --maximized --fork"
+$env.EDITOR = "v"
+$env.VISUAL = "v"
 
 # Vivid LS_COLORS
 $env.LS_COLORS = (vivid generate catppuccin-mocha | str trim)
