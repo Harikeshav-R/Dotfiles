@@ -1,15 +1,16 @@
 AeroSpace
 Cap
+CLion
+Claude
 Claude Code URL Handler
-Compressor
 CrossOver
 DaisyDisk
 Docker
-Final Cut Pro
 Firefox
+Gemini
+Ghostery AdBlocker for Privacy
 Google Chrome
 iTerm
-Ivanti Secure Access
 LockDown Browser
 Microsoft 365 Copilot Shim
 Microsoft Defender Shim
@@ -19,12 +20,14 @@ Microsoft Outlook
 Microsoft PowerPoint
 Microsoft Teams
 Microsoft Word
-Motion
+Obsidian
 OneDrive
 Postman
 PyCharm
 Raycast
+RustRover
 Safari
+SF Symbols
 Shottr
 Sideloadly
 Spotify
@@ -34,7 +37,5 @@ Trae
 Transmission
 uBlock Origin Lite
 VLC
-VMware Fusion
 WhatsApp
-Xcode
 zoom.us
