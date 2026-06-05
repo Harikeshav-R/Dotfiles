@@ -109,6 +109,8 @@ alias l = eza --icons
 alias tree = eza --tree --icons
 alias cat = bat
 alias v = neovide --frame transparent --maximized --fork
+alias vn = env NVIM_APPNAME=nv neovide --frame transparent --maximized --fork
+alias nvn = env NVIM_APPNAME=nv nvim
 
 # Load zoxide
 source ~/.cache/zoxide/init.nu
@@ -154,3 +156,4 @@ def --env fcd [] {
 
 # Run fastfetch on startup to complete the maximalist aesthetic
 fastfetch
+source "~/.cargo/env.nu"
