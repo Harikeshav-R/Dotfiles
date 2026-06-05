@@ -1,21 +1,52 @@
----@type LazySpec
 return {
   "folke/noice.nvim",
-  opts = function(_, opts)
-    opts.routes = opts.routes or {}
-    -- Silence the Neovim 0.11+ deprecation warning for `require('lspconfig')`
-    -- and its accompanying stack trace.
-    table.insert(opts.routes, {
-      filter = {
-        event = "notify",
-        warning = true,
-        any = {
-          { find = "require%('lspconfig'%)" },
-          { find = "lspconfig%.lua:.*in function '__index'" },
-          { find = "stack traceback:" }, -- Fallback: the trace is usually fired right after
+  opts = {
+    presets = {
+      lsp_doc_border = false,
+    },
+    cmdline = {
+      view = "cmdline",
+    },
+    routes = {
+      {
+        filter = {
+          event = "notify",
+          find = "Client copilot quit with exit code",
         },
+        opts = { skip = true },
       },
-      opts = { skip = true },
-    })
-  end,
+      {
+        filter = {
+          event = "notify",
+          find = "No information available",
+        },
+        opts = { skip = true },
+      },
+      {
+        filter = {
+          event = "msg_show",
+          find = "Client copilot quit with exit code",
+        },
+        opts = { skip = true },
+      },
+      {
+        filter = {
+          event = "notify",
+          find = "Toggling hidden files",
+        },
+        opts = { skip = true },
+      },
+      {
+        filter = {
+          event = "msg_show",
+          any = {
+            { find = "%d+L, %d+B" },
+            { find = "; after #%d+" },
+            { find = "; before #%d+" },
+          },
+        },
+        view = "mini",
+      },
+    },
+  },
 }
